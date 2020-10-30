@@ -1,0 +1,26 @@
+---
+title: 'Home'
+permalink: 'index.html'
+---
+
+<!-- May need to reverse this... -->
+<!-- https://github.com/11ty/eleventy/issues/1046 -->
+<% const list = collections.posts %>
+
+<div class="flex items-center justify-center hero min-w-screen h-1/2-screen bg-cover bg-center bg-no-repeat">
+  <img class="w-64" src="/assets/images/logo_white.png" />
+</div>
+
+<div class="max-w-screen-lg py-10 px-4 mx-auto">
+  <ul>
+    <% list.forEach((post) => { %>
+    <li class="mb-3 flex justify-between">
+      <a href="<%= post.url %>"><%= post.data.title %></a>
+  
+      <div><%= this.dateFns.format(new Date(post.data.date), 'LLLL d, yyyy') %></div>
+    </li>
+    <% }) %>
+  </ul>
+</div>
+
+
